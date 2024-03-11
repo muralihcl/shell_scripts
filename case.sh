@@ -25,3 +25,41 @@ case $os in
       echo "I don't know on which operating system you are working on"
       ;;
 esac
+
+number_of_files_in_directory=$(ls -1 | wc -l)
+
+case $number_of_files_in_directory in
+  0)
+      echo "There are no files in $PWD directory"
+      ;;
+  1)
+      echo "You have 1 file in $PWD directory"
+      ;;
+  2)
+      echo "You have 2 files in $PWD directory"
+      ;;
+  3)
+      echo "You have 3 files in $PWD directory"
+      ;;
+  4)
+      echo "You have 4 files in $PWD directory"
+      ;;
+  5)
+      echo "You have 5 files in $PWD directory"
+      ;;
+  6)
+      echo "You have 6 files in $PWD directory"
+      ;;
+  7)
+      echo "You have 7 files in $PWD directory"
+      ;;
+  8)
+      echo "You have 8 files in $PWD directory"
+      ;;
+  9)
+      echo "You have 9 files in $PWD directory"
+      ;;
+  '*')
+      echo "There are more than 9 files in this directory"
+      ;;
+esac
