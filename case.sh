@@ -63,3 +63,5 @@ case $number_of_files_in_directory in
       echo "There are more than 9 files in this directory"
       ;;
 esac
+
+echo "There are $number_of_files_in_directory in $PWD directory"
