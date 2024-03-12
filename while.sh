@@ -7,10 +7,10 @@
 
 # While loop is usually used when number of iterators are not clearly known
 
-# Infinite loop
-count=1
+count=0
 while true
 do
+    count=$((count+1))
     if [[ $count -eq 10 ]]
     then
         continue
@@ -20,5 +20,4 @@ do
         break
     fi
     echo "Number is $count"
-    count=$((count+1))
 done
