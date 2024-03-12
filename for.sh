@@ -12,11 +12,13 @@ do
     echo "The number is $number"
 done
 
+# The for loop breaks with file names with spaces
 for file in $(ls)
 do
     echo "The file name is $file"
 done
 
+# The glob way of approach works fine even with file names with spaces
 for file in *
 do
     echo "The file name is $file"
