@@ -12,6 +12,11 @@ do
     echo "The number is $number"
 done
 
+for file in $(ls)
+do
+    echo "The file name is $file"
+done
+
 for file in *
 do
     echo "The file name is $file"
