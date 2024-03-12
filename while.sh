@@ -11,6 +11,14 @@
 count=1
 while true
 do
-    echo "Print $count"
+    if [[ $count -eq 10 ]]
+    then
+        continue
+    fi
+    if [[ $count -eq 20 ]]
+    then
+        break
+    fi
+    echo "Number is $count"
     count=$((count+1))
 done
