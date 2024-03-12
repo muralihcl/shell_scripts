@@ -5,12 +5,14 @@
 # Date          : 12-Mar-2024
 # Description   : The script is a demonstration of for loop
 
+shopt -s nullglob
+
 for number in {1..10}
 do
     echo "The number is $number"
 done
 
-for file in `ls`
+for file in *
 do
     echo "The file name is $file"
 done
