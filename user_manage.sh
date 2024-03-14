@@ -9,7 +9,8 @@
 
 function check_user() {
     user_name=$1
-    if $(id -u ${user_name} 2> /dev/null | wc -l) -eq 1
+    user_check=$(id -u ${user_name} 2> /dev/null | wc -l)
+    if [[ ${user_check} -eq 1 ]]
     then
         return 1
     else
@@ -33,7 +34,7 @@ function create_user() {
     fi
     echo "Creating the user with provided details"
     useradd -c "$comment" -s $user_shell -m ${user_name}
-    if $? -ne 0
+    if [[ $? -ne 0 ]]
     then
         echo "Successfully created the user $user_name"
         return 0
@@ -59,7 +60,7 @@ function modify_user() {
     fi
     echo "Modifying the user with provided details"
     usermod -c "$comment" -s $user_shell ${user_name}
-    if $? -ne 0
+    if [[ $? -ne 0 ]]
     then
         echo "Successfully created the user $user_name"
         return 0
@@ -87,7 +88,7 @@ case $option in
         check_user $user_name
 
         # Only if the use does not exist, proceed with creation
-        if $? -eq 0
+        if [[ $? -eq 0 ]]
         then
             echo "The user $user_name does not exist, can be created"
             # Read the comment
@@ -97,7 +98,7 @@ case $option in
             echo -n "Enter the default shell: "
             read user_shell
             create_user $user_name $comment $user_shell
-            if $? -eq 0
+            if [[ $? -eq 0 ]]
             then
                 echo "The user $user_name has been successfully created"
             else
@@ -109,7 +110,7 @@ case $option in
         ;;
     2)
         check_user $user_name
-        if $? -ne 0
+        if [[ $? -ne 0 ]]
         then
             echo "The user $user_name exists, can be modified"
             echo -n "Enter the comment: "
@@ -129,7 +130,7 @@ case $option in
         ;;
     3)
         check_user $user_name
-        if $? -ne 0
+        if [[ $? -ne 0 ]]
         then
             echo "The user $user_name exists, can be deleted"
             userdel $user_name -r
