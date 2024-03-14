@@ -10,7 +10,7 @@
 # If the backup file name is already existing, then the backup will be skipped
 
 # Variable declaration
-backup_dir=${HOME}/${USER}/backup
+backup_dir=${HOME}/backup
 backup_file="${backup_dir}/backup_$(date +"%d%m%Y").tar"
 
 if [[ ! -d ${backup_dir} ]]
