@@ -9,7 +9,7 @@
 
 function check_user() {
     user_name=$1
-    if grep -c ${user_name} /etc/passwd -ne 0
+    if $(id -u ${user_name} 2> /dev/null | wc -l) -eq 1
     then
         return 1
     else
