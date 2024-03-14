@@ -9,7 +9,7 @@
 
 function check_user() {
     user_name=$1
-    if grep -qc ${user_name} /etc/passwd -ne 0
+    if grep -c ${user_name} /etc/passwd -ne 0
     then
         return 1
     else
