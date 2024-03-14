@@ -32,7 +32,7 @@ fi
 
 echo "Initiating backup of current script directory to ${backup_file} ..."
 
-tar -cf ${backup_file} . > /dev/null 2>&1
+tar --exclude '.git' -cf ${backup_file} * > /dev/null 2>&1
 
 if [[ ${?} -eq 0 ]]
 then
