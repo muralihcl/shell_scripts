@@ -11,11 +11,14 @@
 
 # Variable declaration
 backup_dir=${HOME}/${USER}/backup
-backup_file=${backup_dir}/backup_$(date +"%d%m%Y")
+backup_file="${backup_dir}/backup_$(date +"%d%m%Y").tar"
 
 if [[ ! -d ${backup_dir} ]]
 then
+    echo "The ${backup_dir} does not exist on this system. Creating it..."
     mkdir ${backup_dir}
+else
+    echo "The ${backup_dir} exists on this system. Moving forward..."
 fi
 
 if [[ -f ${backup_file} ]]
@@ -23,6 +26,8 @@ then
     echo "Today's backup has already been taken, no need to run again. Exiting the program"
     echo "If you want to run another backup for today, delete the ${backup_file} and run again"
     exit 8
+else
+    echo "No previous backups have been taken, moving forward with backup task"
 fi
 
 echo "Initiating backup of current script directory to ${backup_file} ..."
