@@ -20,21 +20,21 @@ function check_user() {
 
 function create_user() {
     user_name=$1
-    if [[ ! -z $2 ]]
+    if [[ ! -z $2 ]] && [[ $2 != '' ]]
     then
         comment=$2
     else
         comment="User $user_name"
     fi
-    if [[ ! -z $3 ]]
+    if [[ ! -z $3 ]] && [[ $3 != '' ]]
     then
         user_shell=$3
     else
         user_shell=/bin/bash
     fi
     echo "Creating the user with provided details"
-    useradd -c "$comment" -s $user_shell -m ${user_name}
-    if [[ $? -ne 0 ]]
+    useradd -c "\"$comment\"" -s $user_shell -m ${user_name}
+    if [[ $? -eq 0 ]]
     then
         echo "Successfully created the user $user_name"
         return 0
@@ -46,21 +46,21 @@ function create_user() {
 
 function modify_user() {
     user_name=$1
-    if [[ ! -z $2 ]]
+    if [[ ! -z $2 ]] && [[ $2 != '' ]]
     then
         comment=$2
     else
         comment="User $user_name"
     fi
-    if [[ ! -z $3 ]]
+    if [[ ! -z $3 ]] && [[ $3 != '' ]]
     then
         user_shell=$3
     else
         user_shell=/bin/bash
     fi
     echo "Modifying the user with provided details"
-    usermod -c "$comment" -s $user_shell ${user_name}
-    if [[ $? -ne 0 ]]
+    usermod -c "\"$comment\"" -s $user_shell ${user_name}
+    if [[ $? -eq 0 ]]
     then
         echo "Successfully created the user $user_name"
         return 0
@@ -118,7 +118,7 @@ case $option in
             echo -n "Enter the default shell: "
             read user_shell
             modify_user $user_name $comment $user_shell
-            if $? -eq 0
+            if [[ $? -eq 0 ]]
             then
                 echo "The user $user_name has been successfully modified"
             else
@@ -134,7 +134,7 @@ case $option in
         then
             echo "The user $user_name exists, can be deleted"
             userdel $user_name -r
-            if $? -eq 0
+            if [[ $? -eq 0 ]]
             then
                 echo "The user $user_name has been successfully deleted"
             else
