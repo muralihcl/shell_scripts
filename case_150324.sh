@@ -59,7 +59,7 @@ case $number_of_files_in_directory in
   9)
       echo "[Case] You have 9 files in $PWD directory"
       ;;
-  '*')
+  *)
       echo "[Case] There are more than 9 files in this directory"
       ;;
 esac
