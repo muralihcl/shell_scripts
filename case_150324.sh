@@ -6,7 +6,7 @@
 # Description   : The script is a demonstration of case over nested if elif else logic
 
 # Enable debug
-# set -x
+ #set -x
 
 # Define variables
 os=$(uname)
@@ -64,5 +64,3 @@ case $number_of_files_in_directory in
       ;;
 esac
 
-# Alternative single line of print without case
-echo "[One line] You have $number_of_files_in_directory files in $PWD directory"
