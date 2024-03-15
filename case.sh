@@ -6,7 +6,7 @@
 # Description   : The script is a demonstration of case over nested if elif else logic
 
 # Enable debug
-# set -x
+ set -x
 
 # Define variables
 os=$(uname)
