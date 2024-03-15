@@ -22,7 +22,7 @@ function create_user() {
     user_name=$1
     if [[ ! -z $2 ]] && [[ $2 != '' ]]
     then
-        comment=$2
+        comment=$(echo $2 | sed 's/ /_/')
     else
         comment="User $user_name"
     fi
@@ -33,7 +33,7 @@ function create_user() {
         user_shell=/bin/bash
     fi
     echo "Creating the user with provided details"
-    useradd -c "\"$comment\"" -s $user_shell -m ${user_name}
+    useradd -c "\$comment" -s $user_shell -m ${user_name}
     if [[ $? -eq 0 ]]
     then
         echo "Successfully created the user $user_name"
@@ -48,9 +48,9 @@ function modify_user() {
     user_name=$1
     if [[ ! -z $2 ]] && [[ $2 != '' ]]
     then
-        comment=$2
+        comment=$(echo $2 | sed 's/ /_/')
     else
-        comment="User $user_name"
+        comment="User_${user_name}"
     fi
     if [[ ! -z $3 ]] && [[ $3 != '' ]]
     then
@@ -59,7 +59,7 @@ function modify_user() {
         user_shell=/bin/bash
     fi
     echo "Modifying the user with provided details"
-    usermod -c "\"$comment\"" -s $user_shell ${user_name}
+    usermod -c "$comment" -s $user_shell ${user_name}
     if [[ $? -eq 0 ]]
     then
         echo "Successfully created the user $user_name"
@@ -97,7 +97,7 @@ case $option in
             # Read the default shell
             echo -n "Enter the default shell: "
             read user_shell
-            create_user $user_name $comment $user_shell
+            create_user $user_name "\"$comment\"" $user_shell
             if [[ $? -eq 0 ]]
             then
                 echo "The user $user_name has been successfully created"
@@ -117,7 +117,7 @@ case $option in
             read comment
             echo -n "Enter the default shell: "
             read user_shell
-            modify_user $user_name $comment $user_shell
+            modify_user $user_name "\"$comment\"" $user_shell
             if [[ $? -eq 0 ]]
             then
                 echo "The user $user_name has been successfully modified"
