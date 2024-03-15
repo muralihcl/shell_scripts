@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Author        : Muralidhara Kakkunje
+# Author        : DIVYA
 # Version       : 1.0
-# Date          : 11-Mar-2024
+# Date          : 15-Mar-2024
 # Description   : The script is a demonstration of case over nested if elif else logic
 
 # Enable debug
