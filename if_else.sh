@@ -15,7 +15,7 @@ company=$(echo $int_company | tr [:upper:] [:lower:])
 echo -n "Enter a random count: "
 read -r count
 
-# set -x
+ set -x
 # Conditionals
 if [[ $company == 'mkoptima' ]]
 then
