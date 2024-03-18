@@ -12,10 +12,7 @@ read name
 echo -n "enter your city: "
 read city
 
-echo -n "Enter your salutation: "
-read sal
-
-echo "Hi $sal. $name, have a great day"
+echo "Hi $name, have a great day"
 
 
 
