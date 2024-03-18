@@ -14,6 +14,6 @@ read sal
 
 echo "Hi $sal. $name, have a great day"
 
-echo -n 'enter your city: "
+echo -n "enter your city: "
 read city
 
