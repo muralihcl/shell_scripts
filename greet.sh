@@ -9,7 +9,7 @@
 echo -n "Enter your name: "
 read name
 
-echo -n "Enter your salutation: "
-read sal
+echo -n "Enter your city: "
+read city
 
-echo "Hi $sal. $name, have a great day"
+echo "Hi $name, have a great day.you live in $city"
